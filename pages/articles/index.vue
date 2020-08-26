@@ -4,7 +4,7 @@
       <h1>Product List</h1>
       <br />
       <ul>
-      	<li v-for="article in articles" :key="article.id"><nuxt-link :to="'articles/' + article.id">{{ article.title }}</nuxt-link></li>
+      	<li v-for="article in articles" :key="article.id"><nuxt-link :to="`/articles/${article.id}`">{{ article.title }}</nuxt-link></li>
       </ul>
     </div>
   </div>
