@@ -20,6 +20,16 @@
 import axios from 'axios';
 
 export default {
+	head() {
+		return {
+			title: this.item.title,
+			meta: [
+				{ hid: 'description', name: 'description', content: this.articler.title },
+				{ hid: 'og:title', name: 'og:title', content: this.articler.title },
+				{ hid: 'og:description', name: 'og:description', content: this.articler.author },
+			]
+		}
+	},
 	data() {
 		return {
 			articler:'',
