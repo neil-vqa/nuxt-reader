@@ -49,8 +49,7 @@ export default {
 	},
 	computed: {
 		pageUrl() {
-			let domain = `https://white-crema.herokuapp.com/articles/` + this.$route.params.id
-			
+			let domain = `https://nuxtreader.netlify.app/articles/` + this.$route.params.id
 			return domain
 		}
 	},
