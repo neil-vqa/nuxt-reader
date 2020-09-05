@@ -22,7 +22,7 @@ import axios from 'axios';
 export default {
 	head() {
 		return {
-			title: this.item.title,
+			title: this.articler.title,
 			meta: [
 				{ hid: 'description', name: 'description', content: this.articler.title },
 				{ hid: 'og:title', name: 'og:title', content: this.articler.title },
