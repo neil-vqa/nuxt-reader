@@ -27,6 +27,7 @@ export default {
 				{ hid: 'description', name: 'description', content: this.articler.title },
 				{ hid: 'og:title', name: 'og:title', content: this.articler.title },
 				{ hid: 'og:description', name: 'og:description', content: this.articler.author },
+				{ hid: 'og:url', name: 'og:url', content: this.pageUrl },
 			]
 		}
 	},
@@ -45,7 +46,14 @@ export default {
 	},
 	created: function() {
 		this.all();
-	}
+	},
+	computed: {
+		pageUrl() {
+			let domain = `https://white-crema.herokuapp.com/articles/` + this.$route.params.id
+			
+			return domain
+		}
+	},
 }
 </script>
 
