@@ -21,13 +21,25 @@ import axios from 'axios';
 
 export default {
 	head: {
-		title: 'Article | Nuxt Reader',
+		//title: 'Article | Nuxt Reader',
 		meta: [
 			{ hid: 'description', name: 'description', content: 'Read an artcile in Nuxt Reader' },
 			{ hid: 'og:title', name: 'og:title', content: 'Article | Nuxt Reader' },
 			{ hid: 'og:description', name: 'og:description', content: 'Read an artcile in Nuxt Reader' },
 			{ hid: 'og:image', name: 'og:image', content: '/nuxt-shot.png' },
 		]
+	},
+	head() {
+		return {
+			title: this.articler.title,
+			meta: [
+				{
+				hid: 'description-prime',
+				name: 'description',
+				content: this.articler.title
+				}
+			]
+		}
 	},
 	data() {
 		return {
