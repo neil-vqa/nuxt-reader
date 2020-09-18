@@ -20,16 +20,7 @@
 import axios from 'axios';
 
 export default {
-	head: {
-		//title: 'Article | Nuxt Reader',
-		meta: [
-			{ hid: 'description', name: 'description', content: 'Read an artcile in Nuxt Reader' },
-			{ hid: 'og:title', name: 'og:title', content: 'Article | Nuxt Reader' },
-			{ hid: 'og:description', name: 'og:description', content: 'Read an artcile in Nuxt Reader' },
-			{ hid: 'og:image', name: 'og:image', content: '/nuxt-shot.png' },
-		]
-	},
-	head() {
+	head() { //method overrides the object, fb metas not working
 		return {
 			title: this.articler.title,
 			meta: [
@@ -40,6 +31,15 @@ export default {
 				}
 			]
 		}
+	},
+	head: {
+		//title: 'Article | Nuxt Reader',
+		meta: [
+			{ hid: 'description', name: 'description', content: 'Read an artcile in Nuxt Reader' },
+			{ hid: 'og:title', name: 'og:title', content: 'Article | Nuxt Reader' },
+			{ hid: 'og:description', name: 'og:description', content: 'Read an artcile in Nuxt Reader' },
+			{ hid: 'og:image', name: 'og:image', content: '/nuxt-shot.png' },
+		]
 	},
 	data() {
 		return {
