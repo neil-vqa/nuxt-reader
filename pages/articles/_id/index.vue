@@ -20,27 +20,26 @@
 import axios from 'axios';
 
 export default {
-	head() { //method overrides the object, fb metas not working
+	head() { //method overrides the object, fb metas not working. Second test below: head method no longer overrides title in page
 		return {
 			title: this.articler.title,
 			meta: [
-				{
-				hid: 'description-prime',
-				name: 'description',
-				content: this.articler.title
-				}
+				{ hid: 'description', name: 'description', content: this.articler.title },
+				{ hid: 'og:title', name: 'og:title', content: 'Article | Nuxt Reader' },
+				{ hid: 'og:description', name: 'og:description', content: 'Read an artcile in Nuxt Reader' },
+				{ hid: 'og:image', name: 'og:image', content: '/nuxt-shot.png' },
 			]
 		}
 	},
-	head: {
+	//head: { //final test: determined that order of 'head' matters, this current position overrides the head method. Recommend: use head object for static generate
 		//title: 'Article | Nuxt Reader',
-		meta: [
-			{ hid: 'description', name: 'description', content: 'Read an artcile in Nuxt Reader' },
-			{ hid: 'og:title', name: 'og:title', content: 'Article | Nuxt Reader' },
-			{ hid: 'og:description', name: 'og:description', content: 'Read an artcile in Nuxt Reader' },
-			{ hid: 'og:image', name: 'og:image', content: '/nuxt-shot.png' },
-		]
-	},
+	//	meta: [
+	//		{ hid: 'description', name: 'description', content: 'Read an artcile in Nuxt Reader' },
+	//		{ hid: 'og:title', name: 'og:title', content: 'Article | Nuxt Reader' },
+	//		{ hid: 'og:description', name: 'og:description', content: 'Read an artcile in Nuxt Reader' },
+	//		{ hid: 'og:image', name: 'og:image', content: '/nuxt-shot.png' },
+	//	]
+	//},
 	data() {
 		return {
 			articler:'',
