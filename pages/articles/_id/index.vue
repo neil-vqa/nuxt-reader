@@ -20,7 +20,7 @@
 import axios from 'axios';
 
 export default {
-	head() { //method overrides the object, fb metas not working. Second test below: head method no longer overrides title in page
+	head() { //method overrides the object, fb metas not working. Second test below: head method no longer overrides title in page. 3rd test: extended the head method, use this!
 		return {
 			title: this.articler.title,
 			meta: [

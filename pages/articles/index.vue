@@ -4,7 +4,7 @@
       <h1>Product List</h1>
       <br />
       <ul>
-      	<li v-for="article in articles" :key="article.id"><nuxt-link :to="`/articles/${article.id}`">{{ article.title }}</nuxt-link></li>
+      	<li v-for="article in allArticles" :key="article.id"><nuxt-link :to="`/articles/${article.id}`">{{ article.title }}</nuxt-link></li>
       </ul>
     </div>
   </div>
@@ -12,23 +12,17 @@
 
 <script>
 import axios from 'axios';
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
-	data() {
-		return {
-			articles: [],
-		}
-	},
 	methods: {
-		all() {
-			axios.get('https://white-crema.herokuapp.com/articles')
-				.then( response => {
-					this.articles = response.data;	
-				});
-		}
+		...mapActions(['fetchArticles']),
 	},
 	created: function() {
-		this.all();
+		this.fetchArticles();
+	},
+	computed: {
+		...mapGetters(['allArticles']),
 	}
 }
 </script>
