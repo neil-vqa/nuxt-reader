@@ -20,16 +20,13 @@
 import axios from 'axios';
 
 export default {
-	head() {
-		return {
-			title: this.articler.title,
-			meta: [
-				{ hid: 'description', name: 'description', content: this.articler.title },
-				{ hid: 'og:title', name: 'og:title', content: this.articler.title },
-				{ hid: 'og:description', name: 'og:description', content: this.articler.author },
-				{ hid: 'og:url', name: 'og:url', content: this.pageUrl },
-			]
-		}
+	head: {
+		title: 'Article | Nuxt Reader',
+		meta: [
+			{ hid: 'description', name: 'description', content: 'Read an artcile in Nuxt Reader' },
+			{ hid: 'og:title', name: 'og:title', content: 'Article | Nuxt Reader' },
+			{ hid: 'og:description', name: 'og:description', content: 'Read an artcile in Nuxt Reader' },
+		]
 	},
 	data() {
 		return {
