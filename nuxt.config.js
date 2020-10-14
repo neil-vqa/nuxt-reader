@@ -2,7 +2,7 @@ import axios from 'axios'
 
 let dynamicRoutes = () => {
  return axios.get('https://white-crema.herokuapp.com/articles').then(res => {
-   return res.data.map(article => `/articles/${article.id}`)
+   return res.data.map(article => `/articles/${article.slug}-${article.id}`)
  })
 }
 

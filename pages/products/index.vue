@@ -13,6 +13,7 @@
 import axios from 'axios';
 
 export default {
+	layout: 'nav',
 	data() {
 		return {
 			products: [],
