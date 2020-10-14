@@ -1,12 +1,11 @@
 <template>
-  <div class="container">
-    <div>
-      <h1>Product List</h1>
+  <div class="flex flex-col m-5 space-y-10">
+    <div class="p-10">
+      <h1 class="text-2xl">Product List</h1>
       <br />
-      <ul>
-      	<li v-for="product in products" :key="product.id">{{ product.name }}</li>
-      </ul>
+      <h2 class="text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Except</h2>
     </div>
+    <div id='collection-component-1602645043996' class="flex bg-gray-100 w-full"></div>
   </div>
 </template>
 
@@ -20,62 +19,178 @@ export default {
 		}
 	},
 	methods: {
-		all() {
-			axios.get('https://white-crema.herokuapp.com/products/?available=true')
-				.then( response => {
-					this.products = response.data;
-					//this.loader = false;	
-				});
-		}
 	},
-	created: function() {
-		this.all();
-	}
+	mounted: function() {
+		/*<![CDATA[*/
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'store-neil-van.myshopify.com',
+      storefrontAccessToken: '808886a054056aa4305a641d79162766',
+    });
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('collection', {
+        id: '221475766421',
+        node: document.getElementById('collection-component-1602645043996'),
+        moneyFormat: '%E2%82%B1%7B%7Bamount%7D%7D',
+        options: {
+  "product": {
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "calc(25% - 20px)",
+          "margin-left": "20px",
+          "margin-bottom": "50px",
+          "width": "calc(25% - 20px)"
+        },
+        "img": {
+          "height": "calc(100% - 15px)",
+          "position": "absolute",
+          "left": "0",
+          "right": "0",
+          "top": "0"
+        },
+        "imgWrapper": {
+          "padding-top": "calc(75% + 15px)",
+          "position": "relative",
+          "height": "0"
+        }
+      },
+      "title": {
+        "font-family": "Lato, sans-serif"
+      },
+      "button": {
+        "font-family": "Montserrat, sans-serif",
+        ":hover": {
+          "background-color": "#463172"
+        },
+        "background-color": "#291d43",
+        ":focus": {
+          "background-color": "#463172"
+        }
+      },
+      "price": {
+        "font-family": "Lato, sans-serif"
+      },
+      "compareAt": {
+        "font-family": "Lato, sans-serif"
+      },
+      "unitPrice": {
+        "font-family": "Lato, sans-serif"
+      }
+    },
+    "text": {
+      "button": "Add to cart"
+    },
+    "googleFonts": [
+      "Lato",
+      "Montserrat"
+    ]
+  },
+  "productSet": {
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "-20px"
+        }
+      }
+    }
+  },
+  "modalProduct": {
+    "contents": {
+      "img": false,
+      "imgWithCarousel": true,
+      "button": false,
+      "buttonWithQuantity": true
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        "font-family": "Montserrat, sans-serif",
+        ":hover": {
+          "background-color": "#463172"
+        },
+        "background-color": "#291d43",
+        ":focus": {
+          "background-color": "#463172"
+        }
+      }
+    },
+    "googleFonts": [
+      "Montserrat"
+    ],
+    "text": {
+      "button": "Add to cart"
+    }
+  },
+  "cart": {
+    "styles": {
+      "button": {
+        "font-family": "Montserrat, sans-serif",
+        ":hover": {
+          "background-color": "#463172"
+        },
+        "background-color": "#291d43",
+        ":focus": {
+          "background-color": "#463172"
+        }
+      }
+    },
+    "text": {
+      "total": "Subtotal",
+      "button": "Checkout"
+    },
+    "googleFonts": [
+      "Montserrat"
+    ]
+  },
+  "toggle": {
+    "styles": {
+      "toggle": {
+        "font-family": "Montserrat, sans-serif",
+        "background-color": "#291d43",
+        ":hover": {
+          "background-color": "#463172"
+        },
+        ":focus": {
+          "background-color": "#463172"
+        }
+      }
+    },
+    "googleFonts": [
+      "Montserrat"
+    ]
+  }
+},
+      });
+    });
+  }
+})();
+/*]]>*/
+	},
 }
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
