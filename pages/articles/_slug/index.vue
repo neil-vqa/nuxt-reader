@@ -17,15 +17,15 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapState } from "vuex";
 
 export default {
 	head() {
 		return {
 			title: this.articler.title,
 			meta: [
-				{ hid: 'description', name: 'description', content: this.articler.title },
-				{ hid: 'og:title', name: 'og:title', content: 'Article | Nuxt Reader' },
+				{ hid: 'description', name: 'description', content: 'Article | Nuxt Reader' },
+				{ hid: 'og:title', name: 'og:title', content: this.articler.title },
 				{ hid: 'og:description', name: 'og:description', content: 'Read an artcile in Nuxt Reader' },
 				{ hid: 'og:image', name: 'og:image', content: '/nuxt-shot.png' },
 			]
@@ -33,23 +33,25 @@ export default {
 	},
 	data() {
 		return {
-			articler:'',
+			id: '',
 		}
 	},
 	methods: {
-		all() {
+		retrieveArticle() {
 			let raw_str = this.$route.params.slug
 			let split_str = raw_str.split("-");
 			let id = split_str[split_str.length - 1];
-
-			axios.get('https://white-crema.herokuapp.com/articles/' + id)
-				.then( response => {
-					this.articler = response.data;
-				});
+			this.id = id;
 		}
 	},
+	computed: {
+		...mapState(['articles']),
+		articler() {
+			return this.articles.find(el => el.id === this.id);
+		},
+	},
 	created: function() {
-		this.all();
+		this.retrieveArticle();
 	},
 }
 </script>
